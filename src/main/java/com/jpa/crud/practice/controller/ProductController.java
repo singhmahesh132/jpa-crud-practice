@@ -1,11 +1,9 @@
 package com.jpa.crud.practice.controller;
 
 import com.jpa.crud.practice.dto.ProductDto;
-import com.jpa.crud.practice.dtoMapper.DtoMapper;
 import com.jpa.crud.practice.entity.Product;
-import com.jpa.crud.practice.service.ProductService;
+import com.jpa.crud.practice.service.ProductServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +14,7 @@ import java.util.List;
 public class ProductController {
 
     @Autowired
-    ProductService service;
+    ProductServiceImpl service;
 
     @PostMapping("/addProduct")
     public ResponseEntity<ProductDto> addProduct(@RequestBody ProductDto productDto){

@@ -21,4 +21,6 @@ public interface ProductService {
     public List<ProductDto> getProducts();
 
     public ProductDto updateProduct(ProductDto productDto);
+
+    public List<ProductDto> havingPriceGreaterThan(int price);
 }

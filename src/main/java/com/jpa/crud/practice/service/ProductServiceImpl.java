@@ -51,9 +51,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public String deleteProductById(int id) {
-        productRepo.deleteById(id);
-        return "Product removed with id:" + id;
+    public List<ProductDto> havingPriceGreaterThan(int price) {
+        List<Product> productList = productRepo.findByPriceGreaterThan(price);
+        List<ProductDto> productDtoList = new ArrayList<>();
+        productList.forEach(product -> productDtoList.add(DtoMapper.entityToDto(product)));
+        return productDtoList;
     }
 
     @Override
@@ -62,6 +64,12 @@ public class ProductServiceImpl implements ProductService {
         List<ProductDto> productDtoList = new ArrayList<>();
         prodList.forEach(product -> productDtoList.add(DtoMapper.entityToDto(product)));
         return productDtoList;
+    }
+
+    @Override
+    public String deleteProductById(int id) {
+        productRepo.deleteById(id);
+        return "Product removed with id:" + id;
     }
 
     @Override
